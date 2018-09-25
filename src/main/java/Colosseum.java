@@ -43,7 +43,7 @@ public class Colosseum {
      * <p>
      * Requirements we should check the user for: <br>
      * - Hit points are between 1 and MAX_HIT_POINTS <br>
-     * - No more than 50 points are split between attack level and defense leve <br>
+     * - No more than 50 points are split between attack level and defense level <br>
      * - Attack level and defense level must have at least 1 point each <br>
      * Example of how this will look to the user:
      * <p>
@@ -73,6 +73,20 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        Scanner lineScanner = new Scanner(System.in);
+
+        System.out.println("Enter Attack Level: ");
+        int attack = lineScanner.nextInt();
+        tempPokemon.attackLevel = attack;
+
+        System.out.println("Enter Defense Level: ");
+        int defense = lineScanner.nextInt();
+        tempPokemon.defenseLevel = defense;
+
+        System.out.println("Enter Hit Points: ");
+        int hp = lineScanner.nextInt();
+        tempPokemon.hitPoints = hp;
+
         return tempPokemon;
     }
 
@@ -90,7 +104,11 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
-        System.out.println("Implement me!");
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + " is currently ahead");
+        } else {
+            System.out.println(secondPokemon.name + " is currently ahead");
+        }
     }
 
     /**
@@ -101,7 +119,15 @@ public class Colosseum {
      * Write this function.
      */
     public static void determineWinner() {
-        System.out.println("Implement me!");
+
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + " is the winner");
+        } else if (firstPokemon.hitPoints < secondPokemon.hitPoints){
+            System.out.println(secondPokemon.name + " is the winner");
+        } else {
+            System.out.println("It's a Tie!");
+        }
+
     }
 
     /**
